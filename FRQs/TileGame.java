@@ -6,7 +6,7 @@ public class TileGame{
 
 	public TileGame() {
 		
-
+		//has to init all the boards
 	
 
 	}
@@ -64,7 +64,7 @@ public class NumberTile {
 		
 		// making the numbertile
 
-		
+
 
 	}
 
