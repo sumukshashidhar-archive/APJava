@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 
-
 public class Driver {
 
 	public static void main(String[] args) {
@@ -12,10 +11,6 @@ public class Driver {
 		tg.printy();
 	}
 }
-
-
-
-
 
 
 public class TileGame{
@@ -33,12 +28,54 @@ public class TileGame{
 	}
 
 	private int getIndexForFit(NumberTile tile) {
-		return(0);
+	
+		//check if the board is empty
+
+		if(this.board.size() == 0) {
+			return(0);
+		}
+
+		else {
+			//loop through the board
+			boolean flag = false;
+			for(int i=0; i < board.size()-1; i++) {
+				int left = board.get(i).getRight();
+				int right = board.get(i+1).getLeft();
+				if(left == tile.getLeft() && right == tile.getRight()) {
+					flag = true;
+					return(i+1);
+				}
+			}
+
+			if(flag == false) {
+				return(-1);
+			}
+
+		}
 	}
 
 
 	public boolean insertTile(NumberTile tile) {
-		return(false);
+		boolean isPossible = false;
+		if(this.board.size() == 0) {
+			isPossible = true;
+			return(isPossible);
+		}
+		else {
+			//checking all orientations
+			for(int i=0; i < 4; i++) {
+				int index = getIndexForFit(tile);
+				if(index > 0){
+					isPossible = true; 
+					return(isPossible);
+				}
+				else {
+					tile.rotate();
+				}
+			}
+
+			return(isPossible);
+		}
 	}
 
 	//NON REQD methods
